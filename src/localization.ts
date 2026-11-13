@@ -39,6 +39,8 @@ export const t = necto.createTranslator({
     "copy": "복사",
     "Copy": "복사",
     "This panel's origin": "이 패널의 출처",
+    "For Anchae, add it under Settings › External agent connection › Advanced: allow debugging tool origins.":
+      "안채는 설정 › 외부 에이전트 연결 › 고급: 디버깅 도구 출처 허용에 이 출처를 넣으세요.",
     "copied": "복사됨",
     "failed": "실패",
     "Loading…": "불러오는 중…",

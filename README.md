@@ -1,6 +1,6 @@
 # Web — a Necto desktop plugin for browser pages
 
-Inspects pages in Chrome or Electron from inside [Necto](https://github.com/toss/necto),
+Inspects pages in Chrome, Electron or Anchae from inside [Necto](https://github.com/toss/necto),
 next to the iOS and Android apps Necto already debugs. It speaks the Chrome DevTools
 Protocol (CDP) directly from the panel.
 
@@ -22,6 +22,11 @@ It is a desktop plugin: it works without a connected app and binds only
      --user-data-dir="$HOME/.chrome-necto"
    ```
 
+   **Anchae** only accepts exact origins the user allowed. Open Web once, copy the
+   panel's origin it shows (`necto-plugin://…`), add it in Anchae under
+   Settings › External agent connection › Advanced: allow debugging tool origins, then
+   open the external connection (Anchae asks for OS owner approval and lists the origins).
+   Requires an Anchae build that includes seunghan91/anchae#220.
 2. In Necto open **Web**, enter the port and press **Find tabs**. The first time, Necto asks
    to approve one command (below).
 3. Pick a tab and **Connect**. Requests made after connecting appear; **Reload page** to
@@ -41,10 +46,11 @@ One approval covers every port, and nothing the panel sends reaches the shell as
 
 ### Measured constraints (Chrome 157, Necto 0.3.0)
 
-- **Anchae cannot be inspected.** It passes `--remote-debugging-port` through but always
-  removes `--remote-allow-origins` (`cef/app/src/cdp_auth.cc`, `Enforce()`), so it refuses
-  the panel's origin with 403 by design: no web origin may drive its DevTools port.
-  Measured on Anchae 1.0.0 (Chromium 156).
+- **Anchae** ignores `--remote-allow-origins` on the command line. It applies only the
+  exact non-web origins listed in its settings (or forced by machine policy
+  `cdpAllowedOrigins`), and only in a run whose debugging port was approved by the OS
+  owner. Before seunghan91/anchae#220 it refused every origin (403). Measured on the
+  #220 test build: the listed origin opens (101), any other origin gets 403.
 - The DevTools socket opens only as `ws://localhost:…`; `ws://127.0.0.1:…` from the panel
   closes with 1006. Target URLs are rewritten to `localhost`.
 - Without `--remote-allow-origins` Chrome refuses the panel's origin

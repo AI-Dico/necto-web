@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "id": "com.aidico.necto-web",
   "name": "Web",
-  "description": "Inspects Chrome and Electron pages over the Chrome DevTools Protocol: network requests and console output",
-  "version": "0.1.4",
+  "description": "Inspects Chrome, Electron and Anchae pages over the Chrome DevTools Protocol: network requests and console output",
+  "version": "0.1.5",
   "author": "AI-Dico",
   "icon": {
     "systemName": "globe"

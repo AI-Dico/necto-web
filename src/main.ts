@@ -298,6 +298,9 @@ function renderList(): void {
         " ",
         copy,
       ]),
+      el("p", { class: "necto-caption" }, [
+        t("For Anchae, add it under Settings › External agent connection › Advanced: allow debugging tool origins."),
+      ]),
     );
     listPane.append(intro);
     return;
