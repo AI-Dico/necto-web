@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "id": "com.aidico.necto-web",
+  "name": "Web",
+  "description": "Inspects Chrome, Anchae and Electron pages over the Chrome DevTools Protocol: network requests and console output",
+  "version": "0.1.3",
+  "author": "AI-Dico",
+  "icon": {
+    "systemName": "globe"
+  },
+  "assets": [
+    "index.html",
+    "assets"
+  ],
+  "allowedOrigins": [
+    "self"
+  ],
+  "operations": [
+    {
+      "id": "shell.request",
+      "title": "Request target discovery",
+      "description": "Asks the user to approve the one command that lists DevTools targets on a local port",
+      "kind": "once",
+      "binding": {
+        "name": "necto.desktop.shell.authorization.request",
+        "version": 1
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "commands": { "type": "array", "items": { "type": "string" } },
+          "access": { "type": "string", "enum": ["commandApproval", "fullAccess"] },
+          "title": { "type": "string", "maxLength": 80 },
+          "message": { "type": "string", "maxLength": 500 }
+        },
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "approved": { "type": "boolean" },
+          "approvedCommands": { "type": "array", "items": { "type": "string" } }
+        },
+        "required": ["approved", "approvedCommands"],
+        "additionalProperties": false
+      },
+      "timeoutMs": 0
+    },
+    {
+      "id": "shell.execute",
+      "title": "List DevTools targets",
+      "description": "Runs the approved discovery command; the port is passed on standard input",
+      "kind": "once",
+      "binding": {
+        "name": "necto.desktop.shell.execute",
+        "version": 2
+      },
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "command": { "type": "string" },
+          "stdin": { "type": "string", "maxLength": 16 }
+        },
+        "required": ["command"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "stdout": { "type": "string" },
+          "stderr": { "type": "string" },
+          "exitCode": { "type": "integer" }
+        },
+        "required": ["stdout", "stderr", "exitCode"],
+        "additionalProperties": false
+      },
+      "timeoutMs": 10000
+    }
+  ]
+}

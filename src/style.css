@@ -1,0 +1,118 @@
+/*
+ * Copyright (c) 2026 AI-Dico
+ *
+ * Only what is particular to this plugin; structure comes from
+ * @necto/bridge/components.css, the same as Necto's own Network panel.
+ */
+
+@import "@necto/bridge/theme.css";
+@import "@necto/bridge/components.css";
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.web-shell {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.web-shell > .necto-app {
+  flex: 1;
+  min-height: 0;
+  height: auto;
+}
+
+.web-shell > .necto-toolbar {
+  flex-wrap: wrap;
+  row-gap: var(--necto-space-2);
+}
+
+.port-field {
+  width: 72px;
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.target-picker {
+  min-width: 160px;
+  max-width: 360px;
+  flex: 1 1 200px;
+}
+
+.status-line {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1 1 160px;
+}
+
+.view-tabs {
+  padding: 0 var(--necto-space-3);
+}
+
+.col-status { width: 88px; }
+.col-method { width: 72px; }
+.col-type { width: 88px; }
+.col-level { width: 88px; }
+.col-started { width: 112px; }
+.col-duration { width: 84px; }
+.col-size { width: 80px; }
+.col-source { width: 160px; }
+
+.req-host {
+  margin-left: var(--necto-space-2);
+  color: var(--necto-text-tertiary);
+  font-size: var(--necto-size-caption);
+}
+
+tr[data-failed="true"] .req-name,
+tr[data-level="error"] .console-text {
+  color: var(--necto-danger);
+}
+
+.cell-method,
+.cell-type,
+.cell-source {
+  color: var(--necto-text-secondary);
+  font-family: var(--necto-font-mono);
+  font-size: var(--necto-size-label);
+}
+
+.cell-source {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 160px;
+}
+
+.console-text {
+  font-family: var(--necto-font-mono);
+  font-size: var(--necto-size-label);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.cell-numeric {
+  color: var(--necto-text-tertiary);
+  font-family: var(--necto-font-mono);
+  font-size: var(--necto-size-label);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.count {
+  color: var(--necto-text-tertiary);
+  font-size: var(--necto-size-label);
+  font-variant-numeric: tabular-nums;
+}
+
+@container (max-width: 640px) {
+  .col-type, .col-started, .col-duration, .col-size, .col-source,
+  .cell-type, .cell-started, .cell-duration, .cell-size, .cell-source { display: none; }
+}

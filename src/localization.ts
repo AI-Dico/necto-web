@@ -1,0 +1,71 @@
+//
+// Copyright (c) 2026 AI-Dico
+//
+
+import { necto } from "@necto/bridge";
+
+export const t = necto.createTranslator({
+  ko: {
+    "Port": "포트",
+    "Find tabs": "탭 찾기",
+    "Choose a tab": "탭 선택",
+    "Connect": "연결",
+    "Disconnect": "연결 끊기",
+    "Reload page": "페이지 새로고침",
+    "Network": "Network",
+    "Console": "Console",
+    "Clear": "비우기",
+    "Filter by method, host or path": "메서드, 호스트 또는 경로 필터",
+    "Filter messages": "메시지 필터",
+    "Status": "상태 코드",
+    "Method": "메서드",
+    "Type": "유형",
+    "Started": "시작 시간",
+    "Duration": "소요 시간",
+    "Size": "크기",
+    "Time": "시간",
+    "Level": "수준",
+    "Message": "메시지",
+    "Source": "위치",
+    "Summary": "요약",
+    "Request": "요청",
+    "Response": "응답",
+    "Headers": "헤더",
+    "Body": "본문",
+    "State": "상태",
+    "Error": "오류",
+    "Redirected to": "리다이렉트 대상",
+    "fail": "실패",
+    "copy": "복사",
+    "copied": "복사됨",
+    "failed": "실패",
+    "Loading…": "불러오는 중…",
+    "Nothing recorded.": "기록된 내용이 없어요.",
+    "No request body.": "요청 본문이 없어요.",
+    "Response body unavailable: {reason}": "응답 본문을 가져올 수 없어요: {reason}",
+    "Close details": "상세 닫기",
+    "Not connected": "연결 안 됨",
+    "Connecting…": "연결하는 중…",
+    "A redirect hop has no body of its own.": "리다이렉트 단계에는 따로 본문이 없어요.",
+    "Connected to {title}": "{title}에 연결됨",
+    "Disconnected: {reason}": "연결이 끊겼어요: {reason}",
+    "Looking for tabs…": "탭을 찾는 중…",
+    "{count} tabs": "탭 {count}개",
+    "No debuggable tabs on this port.": "이 포트에 디버깅할 수 있는 탭이 없어요.",
+    "Enter a port between 1 and 65535.": "1부터 65535 사이의 포트를 입력하세요.",
+    "No requests yet": "아직 요청이 없어요",
+    "Requests made after connecting appear here. Reload the page to see it load.":
+      "연결한 뒤의 요청이 여기에 표시돼요. 처음부터 보려면 페이지를 새로고침하세요.",
+    "No messages yet": "아직 메시지가 없어요",
+    "Console output and uncaught errors from the page appear here.":
+      "페이지의 콘솔 출력과 처리되지 않은 오류가 여기에 표시돼요.",
+    "Connect to a browser tab": "브라우저 탭에 연결하세요",
+    "Start Chrome with --remote-debugging-port=9222 --remote-allow-origins='*', then find its tabs. Anchae listens on 9339.":
+      "Chrome 을 --remote-debugging-port=9222 --remote-allow-origins='*' 로 실행한 뒤 탭을 찾으세요. 안채는 9339 를 써요.",
+    "List browser tabs": "브라우저 탭 목록 읽기",
+    "Web reads the list of debuggable tabs from a local DevTools port with curl. The port is passed separately, so this one approval covers every port.":
+      "Web 플러그인이 로컬 DevTools 포트에서 curl 로 디버깅할 수 있는 탭 목록을 읽어요. 포트는 따로 전달하므로 한 번 승인하면 모든 포트에 쓸 수 있어요.",
+    "Tab discovery was not approved.": "탭 찾기가 승인되지 않았어요.",
+    "Nothing answered on port {port}: {detail}": "{port} 포트에서 응답이 없어요: {detail}",
+  },
+});
