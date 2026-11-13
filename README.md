@@ -1,6 +1,6 @@
 # Web — a Necto desktop plugin for browser pages
 
-Inspects pages in Chrome, Anchae or Electron from inside [Necto](https://github.com/toss/necto),
+Inspects pages in Chrome or Electron from inside [Necto](https://github.com/toss/necto),
 next to the iOS and Android apps Necto already debugs. It speaks the Chrome DevTools
 Protocol (CDP) directly from the panel.
 
@@ -22,7 +22,6 @@ It is a desktop plugin: it works without a connected app and binds only
      --user-data-dir="$HOME/.chrome-necto"
    ```
 
-   Anchae listens on 9339.
 2. In Necto open **Web**, enter the port and press **Find tabs**. The first time, Necto asks
    to approve one command (below).
 3. Pick a tab and **Connect**. Requests made after connecting appear; **Reload page** to
@@ -42,6 +41,10 @@ One approval covers every port, and nothing the panel sends reaches the shell as
 
 ### Measured constraints (Chrome 157, Necto 0.3.0)
 
+- **Anchae cannot be inspected.** It passes `--remote-debugging-port` through but always
+  removes `--remote-allow-origins` (`cef/app/src/cdp_auth.cc`, `Enforce()`), so it refuses
+  the panel's origin with 403 by design: no web origin may drive its DevTools port.
+  Measured on Anchae 1.0.0 (Chromium 156).
 - The DevTools socket opens only as `ws://localhost:…`; `ws://127.0.0.1:…` from the panel
   closes with 1006. Target URLs are rewritten to `localhost`.
 - Without `--remote-allow-origins` Chrome refuses the panel's origin

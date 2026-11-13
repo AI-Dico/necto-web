@@ -12,8 +12,8 @@ export interface DevToolsTarget {
 }
 
 /// The one command a user approves. The port arrives on standard input rather than in
-/// the string, so a single approval covers Chrome on 9222, Anchae on 9339 and anything
-/// else, and nothing the panel types can reach the shell as code.
+/// the string, so a single approval covers Chrome on 9222, an Electron app on its own port and
+/// anything else, and nothing the panel types can reach the shell as code.
 export const DISCOVERY_COMMAND =
   'read -r p; case "$p" in ""|*[!0-9]*) echo "bad port" >&2; exit 2;; esac; ' +
   'curl -sS --max-time 3 "http://localhost:$p/json/list"';

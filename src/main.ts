@@ -280,7 +280,7 @@ function renderList(): void {
     listPane.append(
       empty(
         t("Connect to a browser tab"),
-        t("Start Chrome with --remote-debugging-port=9222 --remote-allow-origins='*', then find its tabs. Anchae listens on 9339."),
+        t("Start Chrome or an Electron app with --remote-debugging-port=9222 --remote-allow-origins='*', then find its tabs."),
       ),
     );
     return;

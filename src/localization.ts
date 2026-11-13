@@ -60,8 +60,8 @@ export const t = necto.createTranslator({
     "Console output and uncaught errors from the page appear here.":
       "페이지의 콘솔 출력과 처리되지 않은 오류가 여기에 표시돼요.",
     "Connect to a browser tab": "브라우저 탭에 연결하세요",
-    "Start Chrome with --remote-debugging-port=9222 --remote-allow-origins='*', then find its tabs. Anchae listens on 9339.":
-      "Chrome 을 --remote-debugging-port=9222 --remote-allow-origins='*' 로 실행한 뒤 탭을 찾으세요. 안채는 9339 를 써요.",
+    "Start Chrome or an Electron app with --remote-debugging-port=9222 --remote-allow-origins='*', then find its tabs.":
+      "Chrome 이나 Electron 앱을 --remote-debugging-port=9222 --remote-allow-origins='*' 로 실행한 뒤 탭을 찾으세요.",
     "List browser tabs": "브라우저 탭 목록 읽기",
     "Web reads the list of debuggable tabs from a local DevTools port with curl. The port is passed separately, so this one approval covers every port.":
       "Web 플러그인이 로컬 DevTools 포트에서 curl 로 디버깅할 수 있는 탭 목록을 읽어요. 포트는 따로 전달하므로 한 번 승인하면 모든 포트에 쓸 수 있어요.",

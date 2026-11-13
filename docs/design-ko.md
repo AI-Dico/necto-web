@@ -79,7 +79,7 @@ NectoMacService
 ## 첫 작업 단위 (A)
 
 1. `create-necto-plugin Web --type desktop` 으로 뼈대.
-2. 대상 찾기: 포트 입력(기본 9222, 안채 9339) → 셸 브리지로 `/json/list` → 탭 목록.
+2. 대상 찾기: 포트 입력(기본 9222) → 셸 브리지로 `/json/list` → 탭 목록.
 3. Network 패널: 요청 표(상태·메서드·URL·시간·크기) + 상세(헤더·본문 `Network.getResponseBody`).
 4. Console 패널, Performance 패널 순.
 5. 시험: headless Chrome 을 띄우는 E2E 1개(맥미니), CDP 대응 코드 단위 시험.
@@ -87,4 +87,4 @@ NectoMacService
 ## 열린 질문
 
 - `ws://127.0.0.1` 만 1006 으로 끊기는 원인(WebKit 쪽인지 Chrome 쪽인지). 당장은 localhost 로 우회.
-- 안채 CDP(9339)가 `--remote-allow-origins` 에 패널 origin 을 허용하는지 — 안채 쪽 설정 확인 필요.
+- ~~안채 CDP(9339)가 패널 origin 을 허용하는지~~ → 2026-11-13 실측: 허용하지 않는다. 안채는 `--remote-allow-origins` 를 항상 지운다(`cef/app/src/cdp_auth.cc` `Enforce()`), 패널 origin 은 403. 안채를 대상으로 하려면 안채 쪽에 사용자 승인형 허용 출처 설정이 필요하다(보안 경로, 안채 작업으로 분리).
