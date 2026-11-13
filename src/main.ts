@@ -277,12 +277,29 @@ function renderList(): void {
 
   if (!session && !network.records.size && !consoleEntries.length) {
     count.textContent = "";
-    listPane.append(
-      empty(
-        t("Connect to a browser tab"),
-        t("Start Chrome or an Electron app with --remote-debugging-port=9222 --remote-allow-origins='*', then find its tabs."),
-      ),
+    const intro = empty(
+      t("Connect to a browser tab"),
+      t("Start Chrome or an Electron app with --remote-debugging-port=9222 --remote-allow-origins='*', then find its tabs."),
     );
+    // A browser that allows exact origins only (Anchae's debugging-tool setting, or
+    // Chrome with --remote-allow-origins=<origin>) needs this panel's own origin.
+    const copy = el("button", { type: "button", class: "necto-button necto-button-quiet" }, [t("Copy")]);
+    copy.addEventListener("click", () => {
+      void copyText(location.origin).then((copied) => {
+        copy.textContent = copied ? t("copied") : t("failed");
+        setTimeout(() => (copy.textContent = t("Copy")), 1400);
+      });
+    });
+    intro.append(
+      el("p", { class: "necto-caption origin-line" }, [
+        t("This panel's origin"),
+        " ",
+        el("code", { class: "origin-value" }, [location.origin]),
+        " ",
+        copy,
+      ]),
+    );
+    listPane.append(intro);
     return;
   }
 

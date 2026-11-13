@@ -116,3 +116,13 @@ tr[data-level="error"] .console-text {
   .col-type, .col-started, .col-duration, .col-size, .col-source,
   .cell-type, .cell-started, .cell-duration, .cell-size, .cell-source { display: none; }
 }
+
+.origin-line {
+  margin-top: var(--necto-space-3);
+}
+
+.origin-value {
+  font-family: var(--necto-font-mono);
+  font-size: var(--necto-size-caption);
+  overflow-wrap: anywhere;
+}

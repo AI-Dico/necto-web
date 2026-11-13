@@ -37,6 +37,8 @@ export const t = necto.createTranslator({
     "Redirected to": "리다이렉트 대상",
     "fail": "실패",
     "copy": "복사",
+    "Copy": "복사",
+    "This panel's origin": "이 패널의 출처",
     "copied": "복사됨",
     "failed": "실패",
     "Loading…": "불러오는 중…",
